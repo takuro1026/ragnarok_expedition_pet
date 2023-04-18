@@ -1,48 +1,22 @@
 """Welcome to Pynecone! This file outlines the steps to create a basic app."""
 from pcconfig import config
-
 import pynecone as pc
 
-from ragnarok_expedition_pet.models.gene import Gene, Part
-from ragnarok_expedition_pet.models.polly import Polly
-from ragnarok_expedition_pet.services.tactic_service import TacticService
-
-docs_url = "https://pynecone.io/docs/getting-started/introduction"
-filename = f"{config.app_name}/{config.app_name}.py"
+from ragnarok_expedition_pet.pages.index import index
+from ragnarok_expedition_pet.states.basic_state import BasicState
 
 
-class ExampleState(pc.State):
-    # The colors to cycle through.
-    colors = ["black", "red", "green", "blue", "purple"]
-
-    # The index of the current color.
-    index = 0
-
-    _service = TacticService()
-
-    def next_color(self):
-        """Cycle to the next color."""
-        self.index = (self.index + 1) % len(self.colors)
-
-    @pc.var
-    def color(self):
-        result = self._service.find_combination(
-            Polly("幸運葉草", "針織圍巾", "雞毛撢子"),
-            Polly("蒸蒸日上", "青綠樹枝", "雲霧繚繞")
-        )
-        return self.colors[self.index]
+def about():
+    return pc.text("About Page")
 
 
-def index():
-    return pc.heading(
-        "Welcome to Pynecone!",
-        on_click=ExampleState.next_color,
-        color=ExampleState.color,
-        _hover={"cursor": "pointer"},
-    )
+def custom():
+    return pc.text("Custom Route")
 
 
 # Add state and page to the app.
-app = pc.App(state=ExampleState)
+app = pc.App(state=BasicState)
 app.add_page(index)
+app.add_page(about)
+app.add_page(custom, route="/custom-route")
 app.compile()

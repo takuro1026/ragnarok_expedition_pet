@@ -1,5 +1,3 @@
-from typing import Tuple
-
 from ragnarok_expedition_pet import Gene, Part
 from ragnarok_expedition_pet.models.gene import Level
 from ragnarok_expedition_pet.models.polly import Polly
