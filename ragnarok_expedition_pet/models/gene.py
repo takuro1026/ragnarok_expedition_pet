@@ -6,7 +6,7 @@ from typing import List
 class Part(Enum):
     HEAD = 0
     BODY = 1
-    BACK = 2
+    AROUND = 2
     FINAL = 3
 
 
