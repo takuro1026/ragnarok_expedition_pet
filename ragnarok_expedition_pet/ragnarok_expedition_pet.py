@@ -4,6 +4,7 @@ from pcconfig import config
 import pynecone as pc
 
 from ragnarok_expedition_pet.models.gene import Gene, Part
+from ragnarok_expedition_pet.models.polly import Polly
 from ragnarok_expedition_pet.services.tactic_service import TacticService
 
 docs_url = "https://pynecone.io/docs/getting-started/introduction"
@@ -25,6 +26,10 @@ class ExampleState(pc.State):
 
     @pc.var
     def color(self):
+        result = self._service.find_combination(
+            Polly("幸運葉草", "針織圍巾", "雞毛撢子"),
+            Polly("蒸蒸日上", "青綠樹枝", "雲霧繚繞")
+        )
         return self.colors[self.index]
 
 

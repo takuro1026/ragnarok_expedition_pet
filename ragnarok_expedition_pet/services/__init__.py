@@ -1,5 +1,7 @@
 from ragnarok_expedition_pet import Gene, Part
 
+basic_polly = []
+
 gene_list = [
     Gene(name="可愛小角", part=Part.HEAD, parent=["山羊犄角", "純淨獨角", "墮天之環", "櫻色貝雷", "生命冠冕"]),
     Gene(name="中分棕髮", part=Part.HEAD, parent=["山羊犄角", "雪色銀絲", "一窩雜草", "鯨泉湧動", "飄逸秀髮"]),
