@@ -3,6 +3,9 @@ from pcconfig import config
 
 import pynecone as pc
 
+from ragnarok_expedition_pet.models.gene import Gene, Part
+from ragnarok_expedition_pet.services.tactic_service import TacticService
+
 docs_url = "https://pynecone.io/docs/getting-started/introduction"
 filename = f"{config.app_name}/{config.app_name}.py"
 
@@ -13,6 +16,8 @@ class ExampleState(pc.State):
 
     # The index of the current color.
     index = 0
+
+    _service = TacticService()
 
     def next_color(self):
         """Cycle to the next color."""
