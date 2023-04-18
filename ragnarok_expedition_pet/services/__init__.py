@@ -2,7 +2,7 @@ from ragnarok_expedition_pet import Gene, Part
 
 basic_polly = []
 
-gene_list = [
+GENE_LIST = [
     Gene(name="可愛小角", part=Part.HEAD, parent=["山羊犄角", "純淨獨角", "墮天之環", "櫻色貝雷", "生命冠冕"]),
     Gene(name="中分棕髮", part=Part.HEAD, parent=["山羊犄角", "雪色銀絲", "一窩雜草", "鯨泉湧動", "飄逸秀髮"]),
     Gene(name="白雪冰晶", part=Part.HEAD, parent=["純淨獨角", "雪色銀絲", "皇帝新帽", "六月飛雪", "靈光乍現"]),
@@ -97,3 +97,10 @@ gene_list = [
     Gene(name="潮利達人", part=Part.FINAL, children=["幸福小帽", "華貴金線", "才藝展示"]),
     Gene(name="關東煮仙波", part=Part.FINAL, children=["四星大廚", "華貴金線", "環保垃圾"])
 ]
+
+
+def check_children_is_empty(gene: Gene):
+    return bool(gene.children)
+
+
+ALL_ADVANCED_GENES = filter(check_children_is_empty, GENE_LIST)

@@ -1,4 +1,4 @@
-from ragnarok_expedition_pet.ragnarok_expedition_pet import pc
+import pynecone as pc
 from ragnarok_expedition_pet.services.tactic_service import TacticService
 from ragnarok_expedition_pet.states.basic_state import BasicState
 

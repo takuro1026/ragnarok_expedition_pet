@@ -2,7 +2,7 @@ from ragnarok_expedition_pet import Gene, Part
 from ragnarok_expedition_pet.models.gene import Level
 from ragnarok_expedition_pet.models.polly import Polly
 from ragnarok_expedition_pet.models.result import Result
-from ragnarok_expedition_pet.services import gene_list
+from ragnarok_expedition_pet.services import GENE_LIST
 from itertools import product
 from collections import Counter
 
@@ -12,7 +12,7 @@ class TacticService:
 
         self.__genes = {}
 
-        for gene in gene_list:
+        for gene in GENE_LIST:
             self.__genes[gene.name] = gene
 
     def find_combination(self, first_polly: Polly, second_polly: Polly):
@@ -77,7 +77,30 @@ class TacticService:
 
         return final_weight, potential_polly
 
-    def search(self, gene_name):
+    def search(self, gene_name) -> Gene:
         gene = self.__genes.get(gene_name)
 
-        return gene if gene is not None else "Not found"
+        return gene
+
+    def generate_formula(self, gene_name):
+        items = []
+
+        formula = self.search(gene_name)
+
+        self.__loop_through_formula(items, formula, 0)
+
+        print(items)
+
+    def __loop_through_formula(self, items, formula, indent):
+        try:
+            print(formula)
+            if len(formula.children) == 0:
+                return
+
+            items.append((formula, indent))
+
+            for child in formula.children:
+                sub_formula = self.search(child)
+                self.__loop_through_formula(items, sub_formula, indent + 1)
+        except TypeError:
+            return

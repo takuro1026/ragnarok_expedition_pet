@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from ragnarok_expedition_pet.models.polly import Polly
 
 
-@dataclass
+@dataclass(frozen=True)
 class Result:
     best_polly: Polly
     weight: int
