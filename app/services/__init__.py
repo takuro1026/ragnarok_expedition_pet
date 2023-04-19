@@ -1,5 +1,5 @@
-from ragnarok_expedition_pet import Gene, Part
-from ragnarok_expedition_pet.models.polly import Polly
+from app import Gene, Part
+from app.models.polly import Polly
 
 BASIC_POLLY = [
     Polly(num="波利1號", head="蒸蒸日上", body="精鐵原石", around="回力骨鏢"),

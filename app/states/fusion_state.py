@@ -2,7 +2,7 @@ import uuid
 
 import pynecone as pc
 
-from ragnarok_expedition_pet.states.basic_state import BasicState
+from app.states.basic_state import BasicState
 
 
 class FusionFormula(pc.Model, table=False):

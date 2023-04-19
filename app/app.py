@@ -1,9 +1,9 @@
 from pcconfig import config
 import pynecone as pc
 
-from ragnarok_expedition_pet.pages.fusion import fusion
-from ragnarok_expedition_pet.pages.index import index
-from ragnarok_expedition_pet.states.basic_state import BasicState
+from app.pages.fusion import fusion
+from app.pages.index import index
+from app.states.basic_state import BasicState
 
 
 # Add state and page to the app.

@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from ragnarok_expedition_pet.models.polly import Polly
+from app.models.polly import Polly
 
 
 @dataclass(frozen=True)

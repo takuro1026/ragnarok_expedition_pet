@@ -1,8 +1,8 @@
 import pynecone as pc
 
-from ragnarok_expedition_pet.pages.nav_bar import navbar
-from ragnarok_expedition_pet.services import ALL_HEAD_GENES, ALL_BODY_GENES, ALL_AROUND_GENES
-from ragnarok_expedition_pet.states.index_state import IndexState, MatchedFormula
+from app.pages.nav_bar import navbar
+from app.services import ALL_HEAD_GENES, ALL_BODY_GENES, ALL_AROUND_GENES
+from app.states.index_state import IndexState, MatchedFormula
 
 
 def render_item(item: MatchedFormula):

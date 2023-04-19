@@ -1,4 +1,4 @@
-FROM python:3.9.15-slim as base
+FROM python:3.11-slim as base
 
 RUN adduser --disabled-password pynecone
 
@@ -35,7 +35,6 @@ WORKDIR /app
 ENV BUN_INSTALL="/app/.bun"
 COPY --from=build /app/ /app/
 RUN pc init
-
 
 FROM runtime
 

@@ -1,5 +1,5 @@
 import pynecone as pc
-from ragnarok_expedition_pet.services.tactic_service import TacticService
+from app.services.tactic_service import TacticService
 
 
 class BasicState(pc.State):

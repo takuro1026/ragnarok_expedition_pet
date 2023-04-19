@@ -1,8 +1,8 @@
 import pynecone as pc
 
-from ragnarok_expedition_pet.pages.nav_bar import navbar
-from ragnarok_expedition_pet.services import ALL_ADVANCED_GENES
-from ragnarok_expedition_pet.states.fusion_state import FusionState, FusionFormula
+from app.pages.nav_bar import navbar
+from app.services import ALL_ADVANCED_GENES
+from app.states.fusion_state import FusionState, FusionFormula
 
 
 def render_item(item: FusionFormula):

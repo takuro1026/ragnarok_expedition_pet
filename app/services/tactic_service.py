@@ -1,8 +1,8 @@
-from ragnarok_expedition_pet import Gene, Part
-from ragnarok_expedition_pet.models.gene import Level
-from ragnarok_expedition_pet.models.polly import Polly
-from ragnarok_expedition_pet.models.result import Result
-from ragnarok_expedition_pet.services import GENE_LIST
+from app import Gene, Part
+from app.models.gene import Level
+from app.models.polly import Polly
+from app.models.result import Result
+from app.services import GENE_LIST
 from itertools import product
 from collections import Counter
 

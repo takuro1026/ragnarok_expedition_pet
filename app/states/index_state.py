@@ -2,9 +2,9 @@ import uuid
 
 import pynecone as pc
 
-from ragnarok_expedition_pet.models.polly import Polly
-from ragnarok_expedition_pet.services import BASIC_POLLY
-from ragnarok_expedition_pet.states.basic_state import BasicState
+from app.models.polly import Polly
+from app.services import BASIC_POLLY
+from app.states.basic_state import BasicState
 
 
 class MatchedFormula(pc.Model, table=False):
