@@ -1,4 +1,4 @@
-FROM python:3.11-slim as base
+FROM python:3.9.15-slim as base
 
 RUN adduser --disabled-password pynecone
 
@@ -36,13 +36,14 @@ ENV BUN_INSTALL="/app/.bun"
 COPY --from=build /app/ /app/
 RUN pc init
 
+
 FROM runtime
 
 COPY --chown=pynecone --from=init /app/ /app/
 USER pynecone
 WORKDIR /app
 
-CMD ["pc","run" , "--env", "prod"]
+CMD ["pc","run"]
 
 EXPOSE 3000
 EXPOSE 8000
