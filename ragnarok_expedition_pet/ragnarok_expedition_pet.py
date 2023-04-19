@@ -1,4 +1,3 @@
-"""Welcome to Pynecone! This file outlines the steps to create a basic app."""
 from pcconfig import config
 import pynecone as pc
 
@@ -13,7 +12,8 @@ def custom():
 
 # Add state and page to the app.
 app = pc.App(state=BasicState)
-app.add_page(index)
-app.add_page(fusion)
+app.add_page(index, title="寵物最佳配對")
+app.add_page(fusion, title="合成表查詢")
 app.add_page(custom, route="/custom-route")
 app.compile()
+

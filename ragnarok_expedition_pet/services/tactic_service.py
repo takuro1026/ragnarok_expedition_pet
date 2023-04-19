@@ -83,24 +83,29 @@ class TacticService:
         return gene
 
     def generate_formula(self, gene_name):
-        items = []
+        formula_items = []
 
         formula = self.search(gene_name)
 
-        self.__loop_through_formula(items, formula, 0)
+        self.__loop_through_formula(formula_items, formula, 0)
 
-        print(items)
+        plain_result = []
+        for gene, indent in formula_items:
+            plain_result.append((gene.name, gene.children, indent))
 
-    def __loop_through_formula(self, items, formula, indent):
+        return plain_result
+
+    def __loop_through_formula(self, formula_items, formula, indent):
         try:
-            print(formula)
             if len(formula.children) == 0:
                 return
 
-            items.append((formula, indent))
+            formula_items.append((formula, indent))
 
             for child in formula.children:
                 sub_formula = self.search(child)
-                self.__loop_through_formula(items, sub_formula, indent + 1)
+                self.__loop_through_formula(formula_items, sub_formula, indent + 1)
+        except AttributeError:
+            return
         except TypeError:
             return
