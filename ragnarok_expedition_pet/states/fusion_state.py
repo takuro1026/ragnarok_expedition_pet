@@ -15,6 +15,12 @@ class FusionFormula(pc.Model, table=False):
 class FusionState(BasicState):
     items: list[FusionFormula] = []
 
+    @staticmethod
+    def __intersperse(lst, item):
+        result = [item] * (len(lst) * 2 - 1)
+        result[0::2] = lst
+        return result
+
     def list_formula(self, value):
         self.items.clear()
         result = self._service.generate_formula(value)
@@ -23,7 +29,7 @@ class FusionState(BasicState):
             self.items.append(
                 FusionFormula(
                     title=item[0],
-                    formula=list('+'.join(item[1])),
+                    formula=FusionState.__intersperse(item[1], '+'),
                     indent=item[2]
                 )
             )

@@ -1,6 +1,14 @@
 from ragnarok_expedition_pet import Gene, Part
+from ragnarok_expedition_pet.models.polly import Polly
 
-basic_polly = []
+BASIC_POLLY = [
+    Polly(num="波利1號", head="蒸蒸日上", body="精鐵原石", around="回力骨鏢"),
+    Polly(num="波利2號", head="幸運葉草", body="青綠樹枝", around="冰糖葫蘆"),
+    Polly(num="波利3號", head="紳士禮帽", body="閃耀冰方", around="雲霧繚繞"),
+    Polly(num="波利4號", head="白雪冰晶", body="格子襯衫", around="雞毛撢子"),
+    Polly(num="波利5號", head="中分棕髮", body="針織圍巾", around="法國麵包"),
+    Polly(num="波利6號", head="可愛小角", body="羊毛線團", around="鋒利彎刀"),
+]
 
 GENE_LIST = [
     Gene(name="可愛小角", part=Part.HEAD, parent=["山羊犄角", "純淨獨角", "墮天之環", "櫻色貝雷", "生命冠冕"]),
@@ -99,8 +107,7 @@ GENE_LIST = [
 ]
 
 
-def check_children_is_empty(gene: Gene):
-    return bool(gene.children)
-
-
-ALL_ADVANCED_GENES = filter(check_children_is_empty, GENE_LIST)
+ALL_ADVANCED_GENES = filter(lambda gene: bool(gene.children), GENE_LIST)
+ALL_HEAD_GENES = filter(lambda gene: gene.part == Part.HEAD, GENE_LIST)
+ALL_BODY_GENES = filter(lambda gene: gene.part == Part.BODY, GENE_LIST)
+ALL_AROUND_GENES = filter(lambda gene: gene.part == Part.AROUND, GENE_LIST)

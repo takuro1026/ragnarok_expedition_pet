@@ -24,7 +24,7 @@ class TacticService:
         best_combination = None
         best_potential_match = None
         for components in product(heads, bodies, around):
-            combination = Polly(components[0], components[1], components[2])
+            combination = Polly("test", components[0], components[1], components[2])
             weight, potential_polly = self.find_final_match(combination)
 
             if weight > max_weight:
@@ -51,7 +51,7 @@ class TacticService:
 
         if len(result) != 0:
             result = list(set(result))
-        elif gene1.get_level() == Level.BASIC and gene2.get_level() == Level.BASIC:
+        elif gene1.get_level() == Level.BASIC and gene2.get_level() == Level.BASIC and gene1.name != gene2.name:
             result = list(set(gene1.parent).intersection(gene2.parent))
 
         return result
