@@ -16,16 +16,16 @@ class TacticService:
             self.__genes[gene.name] = gene
 
     def find_combination(self, first_polly: Polly, second_polly: Polly):
-        heads = self.find_advanced_match(first_polly.head, second_polly.head)
-        bodies = self.find_advanced_match(first_polly.body, second_polly.body)
-        around = self.find_advanced_match(first_polly.around, second_polly.around)
+        heads = self.__find_advanced_match(first_polly.head, second_polly.head)
+        bodies = self.__find_advanced_match(first_polly.body, second_polly.body)
+        around = self.__find_advanced_match(first_polly.around, second_polly.around)
 
         max_weight = 0
         best_combination = None
         best_potential_match = None
         for components in product(heads, bodies, around):
             combination = Polly("test", components[0], components[1], components[2])
-            weight, potential_polly = self.find_final_match(combination)
+            weight, potential_polly = self.__find_final_match(combination)
 
             if weight > max_weight:
                 max_weight = weight
@@ -38,7 +38,7 @@ class TacticService:
             best_potential_match=best_potential_match
         )
 
-    def find_advanced_match(self, gene_str1, gene_str2):
+    def __find_advanced_match(self, gene_str1, gene_str2):
         gene1: Gene = self.__genes.get(gene_str1)
         gene2: Gene = self.__genes.get(gene_str2)
 
@@ -56,7 +56,7 @@ class TacticService:
 
         return result
 
-    def find_final_match(self, polly: Polly):
+    def __find_final_match(self, polly: Polly):
         head_gene_related = self.__genes.get(polly.head).parent
         body_gene_related = self.__genes.get(polly.body).parent
         around_gene_related = self.__genes.get(polly.around).parent
@@ -77,7 +77,7 @@ class TacticService:
 
         return final_weight, potential_polly
 
-    def search(self, gene_name) -> Gene:
+    def __search(self, gene_name) -> Gene:
         gene = self.__genes.get(gene_name)
 
         return gene
@@ -85,7 +85,7 @@ class TacticService:
     def generate_formula(self, gene_name):
         formula_items = []
 
-        formula = self.search(gene_name)
+        formula = self.__search(gene_name)
 
         self.__loop_through_formula(formula_items, formula, 0)
 
@@ -103,7 +103,7 @@ class TacticService:
             formula_items.append((formula, indent))
 
             for child in formula.children:
-                sub_formula = self.search(child)
+                sub_formula = self.__search(child)
                 self.__loop_through_formula(formula_items, sub_formula, indent + 1)
         except AttributeError:
             return
